@@ -8,7 +8,7 @@
     let visited = {};
     const length = nums.length;
 
-    function dps(head) {
+    function dfs(head) {
         if (current.length === length) {
             // 递归边界
             res.push(current.slice());
@@ -19,7 +19,7 @@
             if (typeof visited[nums[i]] === "undefined") {
                 current.push(nums[i]);
                 visited[nums[i]] = head;
-                dps(++head);
+                dfs(++head);
                 current.pop();
                 delete visited[nums[i]];
             }
@@ -27,7 +27,7 @@
     }
 
     // 开始递归
-    dps(0);
+    dfs(0);
 
     return res;
 };
